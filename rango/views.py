@@ -4,13 +4,13 @@ from django.shortcuts import render_to_response
 
 from rango.models import Category, Page
 
-def encode(name):
-    name_encoded = name.replace('_', ' ')
-    return name_encoded
+def decode(str):
+    str_decode = str.replace('_', ' ')
+    return str_decode
 
-def decode(name):
-    name_decoded = name.replace(' ', '_')
-    return name_decoded
+def encode(str):
+    str_encode = str.replace(' ', '_')
+    return str_encode
 
 def index(request):
     # Request the context of the request.
@@ -36,7 +36,7 @@ def index(request):
     # We loop through each category returned, and create a URL attribute.
     # This attribute stores an encoded URL (e.g. spaces replaced with underscores).
     for category in category_list:
-        category.url = decode(category.name)
+        category.url = encode(category.name)
 
     # Return a rendered response to send the client.
     # We make use of the shortcut function to make our lives easier.
@@ -55,7 +55,7 @@ def category(request, category_name_url):
     # Change underscores in the category name to spaces.
     # URLs don't handle spaces well, so we encode them as underscores.
     # We can then simply replace the underscores with spaces again to get the name.
-    category_name = encode(category_name_url)
+    category_name = decode(category_name_url)
 
     # Create a context dictionary which we can pass to the template rendering engine.
     # We start by containing the name of the category passed by the user.
