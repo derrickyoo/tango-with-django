@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+    <title>Rango</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <script src="{% static "js/jquery.js" %}"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Register with Rango</h1>  
+
+      {% if registered %}
+      Rango says: <strong>Thank you for registering!</strong>
+      <a href="/rango/">Return to the homepage.</a><br />
+      {% else %}
+      Rango says: <strong>Register here!</strong>
+      <hr> 
+
+      <!-- When you want users to upload files, you need to set enctype to multipart/form-data. 
+      This is because the browser needs to encode the data in a number of chunks in order to send the file. -->
+      <form id="user_form" method="post" action="/rango/register/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Display each form. The as.p method wraps each element in a paragraph(<p>) element.
+        This ensures each element appears on a new line., making everything look neater.-->
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}  
+
+        <!-- Provide a button to click to submit the form. -->
+        <input type="submit" name="submit" value="Register" />
+      </form>
+      {% endif %}
+  </div>
+  </body>
+</html>
