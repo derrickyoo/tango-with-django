@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+    <title>Rango</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <script src="{% static "js/jquery.js" %}"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Login to Rango</h1>  
+
+      {% if registered %}
+      Rango says: <strong>Thank you for registering!</strong>
+      <a href="/rango/">Return to the homepage.</a><br />
+      {% else %}
+      Rango says: <strong>Register here!</strong>
+      <hr> 
+        <form id="login_form" method="post" action="/rango/login/">
+          {% csrf_token %}
+          <p>Username: <input type="text" name="username" value="" size="50" /></p>
+          <br/>
+          <p>Password: <input type="password" name="password" value="" size="50" /></p>
+          <br />
+
+          <input type="submit" value="submit" />
+        </form>
+      {% endif %}
+  </div>
+  </body>
+</html>

@@ -8,6 +8,8 @@ STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'rango.db')
 
+LOGIN_URL = '/rango/login'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
