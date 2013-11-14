@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Rango - {% block title %}How to Tango with Django!{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <script src="{% static "js/jquery.js" %}"></script>
+  </head>
+
+  <body>
+    {% block body_block %}
+    {% endblock %}
+  </body>
+</html>

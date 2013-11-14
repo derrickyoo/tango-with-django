@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-{% load static %}
+{% extends 'rango/base.html' %}
 
-<html>
-  <head>
-    <title>Rango</title>
-    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-    <script src="{% static "js/jquery.js" %}"></script>
-  </head>
+{% block title %}Register{% endblock %}
 
-  <body>
+{% block body_block %}
     <div class="container">
       <h1>Register with Rango</h1>  
 
@@ -33,5 +27,5 @@
       </form>
       {% endif %}
   </div>
-  </body>
+{% endblock %}
 </html>
